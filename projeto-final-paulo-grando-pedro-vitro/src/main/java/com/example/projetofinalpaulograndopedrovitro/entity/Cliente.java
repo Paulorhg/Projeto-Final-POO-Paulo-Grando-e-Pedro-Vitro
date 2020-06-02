@@ -1,13 +1,13 @@
 package com.example.projetofinalpaulograndopedrovitro.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -35,7 +35,7 @@ private List<Horario> horarios;
 @ManyToMany
 @JoinTable(
     name="FuncionariosClientes",
-uniqueConstraints = @UniqueConstraint(columnNames = {"id_funcionario", "id_cliente"})
+uniqueConstraints = @UniqueConstraint(columnNames = {"id_funcionario", "id_cliente"}),
 joinColumns = @JoinColumn(name = "id_cliente"),
 inverseJoinColumns = @JoinColumn(name = "id_funcionario")
 )
@@ -84,7 +84,7 @@ public List<Funcionario> getFuncionarios() {
 public void setFuncionarios(List<Funcionario> funcionarios) {
     this.funcionarios = funcionarios;
 }
-
+    
 @Override
 public String toString() {
     return "Cliente [id=" + id + ", nome=" + nome + "]";

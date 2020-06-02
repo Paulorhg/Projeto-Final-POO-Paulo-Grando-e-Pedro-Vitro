@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+     <style>
+        table, th, td {
+          border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Menu</h1>
+    <a href="/servicos">Serviços</a>
+    <a href="/funcionarios">Funcionarios</a>
+    <a href="/clientes">Clientes</a>
+    <a href="/horarios">Horarios</a>
+
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>RA</th>
+            
+        </tr>
+       
+        <tr>
+            <td th:text ="Pedro Vitro"></td> 
+            <td th:text ="180122"></td>
+        </tr>
+        <tr>
+            <td th:text ="Paulo Horta"></td> 
+            <td th:text ="180173"></td>
+        </tr>
+    </table>
+</body>
+</html>
