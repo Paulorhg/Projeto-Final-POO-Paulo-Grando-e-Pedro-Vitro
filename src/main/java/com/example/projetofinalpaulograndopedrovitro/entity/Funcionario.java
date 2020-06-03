@@ -44,7 +44,7 @@ public class Funcionario implements Serializable {
         joinColumns = @JoinColumn(name = "id_funcionario"),
         inverseJoinColumns = @JoinColumn(name = "id_servico")
     )
-    private List<Servico> funcionarios;
+    private List<Servico> servicos;
 
     public static long getSerialversionuid() {
         return serialVersionUID;
@@ -82,12 +82,12 @@ public class Funcionario implements Serializable {
         this.clientes = clientes;
     }
 
-    public List<Servico> getFuncionarios() {
-        return funcionarios;
+    public List<Servico> getServicos() {
+        return servicos;
     }
 
-    public void setFuncionarios(List<Servico> funcionarios) {
-        this.funcionarios = funcionarios;
+    public void setServicos(List<Servico> servicos) {
+        this.servicos = servicos;
     }
 
     @Override

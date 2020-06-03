@@ -45,7 +45,7 @@ public class FuncionarioController {
         Funcionario funcionario = funcionarioService.getFuncionarioById(id);
         mv.addObject("funcionario", funcionario);
         mv.addObject("horarios", funcionario.getHorarios());
-        // mv.addObject("serviços", funcionario.getServiços());
+        mv.addObject("servicos", funcionario.getServicos());
 
         return mv;
 
