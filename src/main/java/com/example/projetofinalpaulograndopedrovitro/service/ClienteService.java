@@ -22,7 +22,11 @@ public class ClienteService {
         repository.save(cliente);
     }
 
-	public Cliente getAlunoById(Integer id) {
+	public Cliente getClienteById(Integer id) {
 		return repository.findById(id).get();
+    }
+    
+    public void remover(Cliente cliente) {
+        repository.delete(cliente);
 	}
 }

@@ -22,7 +22,11 @@ public class FuncionarioService {
         repository.save(funcionario);
     }
 
-	public Funcionario getAlunoById(Integer id) {
+	public Funcionario getFuncionarioById(Integer id) {
 		return repository.findById(id).get();
+    }
+    
+    public void remover(Funcionario funcionario) {
+        repository.delete(funcionario);
 	}
 }

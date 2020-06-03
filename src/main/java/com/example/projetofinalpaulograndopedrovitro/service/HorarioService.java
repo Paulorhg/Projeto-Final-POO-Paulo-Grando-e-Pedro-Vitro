@@ -22,7 +22,11 @@ public class HorarioService {
         repository.save(horario);
     }
 
-	public Horario getAlunoById(Integer id) {
+	public Horario getHorarioById(Integer id) {
 		return repository.findById(id).get();
+    }
+    
+    public void remover(Horario horario) {
+        repository.delete(horario);
 	}
 }

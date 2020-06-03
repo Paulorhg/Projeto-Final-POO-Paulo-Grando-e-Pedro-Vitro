@@ -22,8 +22,12 @@ public class ServicoService {
         repository.save(servico);
     }
 
-	public Servico getAlunoById(Integer id) {
+	public Servico getServicoById(Integer id) {
 		return repository.findById(id).get();
+    }
+    
+    public void remover(Servico servico) {
+        repository.delete(servico);
 	}
     
 }
