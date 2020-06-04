@@ -22,20 +22,14 @@ public class Funcionario implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String nome;
+    private int telefone;
+    private int anoNascimento;
 
 
     @OneToMany
     @JoinColumn(name = "ID_FUNCIONARIO")
     private List<Horario> horarios;
 
-    @ManyToMany
-    @JoinTable(
-    name="FuncionariosClientes",
-    uniqueConstraints = @UniqueConstraint(columnNames = {"id_funcionario", "id_cliente"}),
-    joinColumns = @JoinColumn(name = "id_funcionario"),
-    inverseJoinColumns = @JoinColumn(name = "id_cliente")
-    )
-    private List<Cliente> clientes;
     
     @ManyToMany
     @JoinTable(
@@ -46,6 +40,7 @@ public class Funcionario implements Serializable {
     )
     private List<Servico> servicos;
 
+    
     public static long getSerialversionuid() {
         return serialVersionUID;
     }
@@ -74,14 +69,6 @@ public class Funcionario implements Serializable {
         this.horarios = horarios;
     }
 
-    public List<Cliente> getClientes() {
-        return clientes;
-    }
-
-    public void setClientes(List<Cliente> clientes) {
-        this.clientes = clientes;
-    }
-
     public List<Servico> getServicos() {
         return servicos;
     }
@@ -93,6 +80,22 @@ public class Funcionario implements Serializable {
     @Override
     public String toString() {
         return "Funcionario [id=" + id + ", nome=" + nome + "]";
+    }
+
+    public int getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(int telefone) {
+        this.telefone = telefone;
+    }
+
+    public int getAnoNascimento() {
+        return anoNascimento;
+    }
+
+    public void setAnoNascimento(int anoNascimento) {
+        this.anoNascimento = anoNascimento;
     }
 
     

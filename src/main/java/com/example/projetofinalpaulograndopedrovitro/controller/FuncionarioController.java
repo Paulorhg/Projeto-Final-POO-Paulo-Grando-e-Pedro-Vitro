@@ -40,7 +40,7 @@ public class FuncionarioController {
     @GetMapping("/detalheFuncionario/{id}")
     public ModelAndView detalheFuncionario(@PathVariable(name = "id") Integer id) {
 
-        ModelAndView mv = new ModelAndView("detalhefuncionario");
+        ModelAndView mv = new ModelAndView("detalheFuncionario");
 
         Funcionario funcionario = funcionarioService.getFuncionarioById(id);
         mv.addObject("funcionario", funcionario);
