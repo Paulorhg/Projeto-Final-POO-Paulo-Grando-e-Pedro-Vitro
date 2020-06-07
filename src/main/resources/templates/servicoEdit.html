@@ -15,5 +15,26 @@
     <a href="/">Menu</a>
     <a href="/servicos">Voltar</a>
     
+
+
+    <form th:action="@{/salvarServico}" th:object="${servico}" method="POST" id="formServico">
+      
+        <label>ID:</label> <span th:text="${servico.id}"></span>
+        <br>
+        <input type="hidden" th:value="${servico.id}" th:field="${servico.id}" name="id" />
+      
+        <label>Nome:</label>
+        <input type="text" placeholder="Digite o nome" th:value="${servico.nome}" name="nome" required/>
+        <br>  
+        <label>Preço:</label>
+        <input type="text" placeholder="Digite o preço" th:value="${servico.preco}" name="preco" required/>
+        <br>  
+
+        <br>
+        <br>
+        <input type="submit" value="Salvar" />
+        <input type="reset"  value="Cancelar"/>
+    </form>
+    
 </body>
 </html>
