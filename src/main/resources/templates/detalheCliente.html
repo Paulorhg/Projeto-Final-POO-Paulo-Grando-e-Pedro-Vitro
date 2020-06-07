@@ -15,5 +15,29 @@
     <a href="/">Menu</a>
     <a href="/clientes">Voltar</a>
     
+    <br>
+    <br>
+    <b>Código: </b> <span th:text="${cliente.id}"></span>
+    <br><b>Nome: </b> <span th:text="${cliente.nome}"></span>
+    <br><b>Telefone: </b> <span th:text="${cliente.telefone}"></span>
+    <br>
+    <br>
+
+    <table>
+        <tr>
+            <th>Horario</th>
+            <th>Funcionario</th>
+            <th>Serviço</th>
+        </tr>
+       
+        <tr th:each="cliente : ${clientes}">
+            <td th:text="${cliente.horario?.hora}"></td>
+            <td th:text="${cliente.horario?.funcionario}"></td>
+            <td th:text="${cliente.horario?.servio}"></td>
+        </tr>
+    </table>
+    <br>
+
+
 </body>
 </html>

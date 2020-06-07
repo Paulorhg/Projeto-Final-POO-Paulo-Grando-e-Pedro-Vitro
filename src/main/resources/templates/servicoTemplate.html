@@ -31,14 +31,16 @@
             <th>Preço</th>
             <th>Remover</th>
             <th>Editar</th>
+            <th>Detalhes</th>
         </tr>
        
-        <tr th:each="horario : ${horarios}">
+        <tr th:each="servico : ${servicos}">
             <td th:text="${servico.id}"></td>
             <td th:text="${servico.nome}"></td>
             <td th:text="${servico.preco}"></td>
             <td> <a th:href="@{'/removerServico?matricula=' + ${servico.id}}">Remover</a></td>
             <td> <a th:href="@{'/editarServico?matricula=' + ${servico.id}}">Editar</a></td>
+            <td> <a th:href="@{'/detalheServico/' + ${servico.id}}">Detalhe</a></td>
         </tr>
     </table>
 

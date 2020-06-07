@@ -14,5 +14,42 @@
     <h1>Detalhes Funcionario</h1>    
     <a href="/">Menu</a>
     <a href="/funcionarios">Voltar</a>
+    <br>
+    <br>
+    <b>Código: </b> <span th:text="${funcionario.id}"></span>
+    <br><b>Nome: </b> <span th:text="${funcionario.nome}"></span>
+    <br><b>Telefone: </b> <span th:text="${funcionario.telefone}"></span>
+    <br><b>Ano de Nascimento: </b> <span th:text="${funcionario.anoNascimento}"></span>
+
+    <h2>Serviços Prestados:</h2>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Preço</th>
+        </tr>
+       
+        <tr th:each="servico : ${funcionario.servicos}">
+            <td th:text="${servico.id}"></td>
+            <td th:text="${servico.nome}"></td>
+            <td th:text="${servico.preco}"></td>
+        </tr>
+    </table>
+    <br>
+    <br>
+
+    
+    <form th:action="@{/associarFuncionarioServico(codigoFuncionario=${funcionario.id})}" method="POST">
+        <label><b>Serviços:</b></label>
+        <select name="id" required>
+            <option value="">Escolha o Serviço</option>
+            <option th:each="servico : ${servicos}"
+                        th:value="${servico.id}"
+                        th:text="${servico.nome}">
+            </option>
+        </select>
+        <input type="submit" value="Associar Servico" />
+    </form>
+
 </body>
 </html>
