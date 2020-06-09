@@ -1,7 +1,9 @@
 package com.example.projetofinalpaulograndopedrovitro.controller;
 
 import com.example.projetofinalpaulograndopedrovitro.entity.Funcionario;
+import com.example.projetofinalpaulograndopedrovitro.entity.Servico;
 import com.example.projetofinalpaulograndopedrovitro.service.FuncionarioService;
+import com.example.projetofinalpaulograndopedrovitro.service.ServicoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,9 @@ public class FuncionarioController {
 
     @Autowired
     private FuncionarioService funcionarioService;
+
+    @Autowired
+    private ServicoService servicoService;
 
     @GetMapping("/funcionarios")
     public ModelAndView getFuncionarios() {
@@ -45,7 +50,7 @@ public class FuncionarioController {
         Funcionario funcionario = funcionarioService.getFuncionarioById(id);
         mv.addObject("funcionario", funcionario);
         mv.addObject("horarios", funcionario.getHorarios());
-        mv.addObject("servicos", funcionario.getServicos());
+        mv.addObject("servicos", servicoService.getServicos());
 
         return mv;
 
@@ -58,9 +63,24 @@ public class FuncionarioController {
 
         Funcionario funcionario = funcionarioService.getFuncionarioById(id);
         mv.addObject("funcionario", funcionario);
+        mv.addObject("servicos", servicoService.getServicos());
 
         return mv;
 
+    }
+
+    @PostMapping("/associarFuncionarioServico")
+    public String associarAutor(@ModelAttribute Servico servico, @RequestParam Integer codigoFuncionario) {
+        
+
+        Funcionario funcionario = funcionarioService.getFuncionarioById(codigoFuncionario);
+        servico = servicoService.getServicoById(servico.getId());
+        
+
+        funcionario.getServicos().add(servico);
+        funcionarioService.salvar(funcionario);
+
+        return "redirect:/detalheFuncionario/" + codigoFuncionario;
     }
 
     @PostMapping("/salvarFuncionario")

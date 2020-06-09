@@ -13,6 +13,33 @@
 <body>
     <h1>Agendamento</h1>    
     <a href="/">Menu</a>
+
+    <br>
+    <br>
+
+    <form th:action="@{/salvarHorario}" th:object="${horario}" method="POST" id="formHorario">
+        <label>Funcionario:</label>
+        <select th:field="${horario.funcionario}" required>
+            <option value="">Escolha o funcionario</option>
+            <option th:each="funcionario : ${funcionarios}"
+                        th:value="${funcionario.id}"
+                        th:text="${funcionario.nome}">
+            </option>
+        </select>
+        <label>Cliente:</label>
+        <select th:field="${horario.cliente}" required>
+            <option value="">Escolha o cliente</option>
+            <option th:each="cliente : ${clientes}"
+                        th:value="${cliente.id}"
+                        th:text="${cliente.nome}">
+            </option>
+        </select>
+        <label>Data:</label>
+        <input type="date" placeholder="Escolha a data" th:value="${horario.hora}" name="preco" required/>
+        
+        <input type="submit" value="Salvar" />
+        <input type="reset"  value="Limpar" />
+    </form>
     //receber infos
     //dia
 

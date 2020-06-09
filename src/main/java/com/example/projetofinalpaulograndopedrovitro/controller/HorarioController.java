@@ -1,6 +1,8 @@
 package com.example.projetofinalpaulograndopedrovitro.controller;
 
 import com.example.projetofinalpaulograndopedrovitro.entity.Horario;
+import com.example.projetofinalpaulograndopedrovitro.service.ClienteService;
+import com.example.projetofinalpaulograndopedrovitro.service.FuncionarioService;
 import com.example.projetofinalpaulograndopedrovitro.service.HorarioService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +20,20 @@ public class HorarioController {
     @Autowired
     private HorarioService horarioService;
 
+    @Autowired
+    private FuncionarioService funcionarioService;
+
+    @Autowired
+    private ClienteService clienteService; 
+
     @GetMapping("/horarios")
     public ModelAndView getHorarios() {
         ModelAndView mv = new ModelAndView("horarioTemplate");
 
         mv.addObject("horario", new Horario());
         mv.addObject("horarios", horarioService.getHorarios());
+        mv.addObject("funcionarios", funcionarioService.getFuncionarios());
+        mv.addObject("clientes", clienteService.getClientes());
 
         return mv;
     }

@@ -52,8 +52,8 @@
             <td th:text="${funcionario.nome}"></td>
             <td th:text="${funcionario.telefone}"></td>
             <td th:text="${funcionario.anoNascimento}"></td>
-            <td> <a th:href="@{'/removerFuncionario?matricula=' + ${funcionario.id}}">Remover</a></td>
-            <td> <a th:href="@{'/editarFuncionario?matricula=' + ${funcionario.id}}">Editar</a></td>
+            <td> <a th:href="@{'/removerFuncionario?id=' + ${funcionario.id}}">Remover</a></td>
+            <td> <a th:href="@{'/editarFuncionario/ ' + ${funcionario.id}}">Editar</a></td>
             <td> <a th:href="@{'/detalheFuncionario/' + ${funcionario.id}}">Detalhe</a></td>
         </tr>
     </table>

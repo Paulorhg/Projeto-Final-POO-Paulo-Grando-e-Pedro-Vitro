@@ -22,7 +22,8 @@
         <label>ID:</label> <span th:text="${servico.id}"></span>
         <br>
         <input type="hidden" th:value="${servico.id}" th:field="${servico.id}" name="id" />
-      
+        <input type="hidden" th:value="${servico.funcionarios}" th:field="${servico.funcionarios}" name="funcionarios" />
+
         <label>Nome:</label>
         <input type="text" placeholder="Digite o nome" th:value="${servico.nome}" name="nome" required/>
         <br>  
