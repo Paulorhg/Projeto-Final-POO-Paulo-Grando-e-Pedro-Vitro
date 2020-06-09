@@ -1,5 +1,11 @@
 package com.example.projetofinalpaulograndopedrovitro.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import com.example.projetofinalpaulograndopedrovitro.entity.Horario;
 import com.example.projetofinalpaulograndopedrovitro.service.ClienteService;
 import com.example.projetofinalpaulograndopedrovitro.service.FuncionarioService;
@@ -35,6 +41,12 @@ public class HorarioController {
         mv.addObject("funcionarios", funcionarioService.getFuncionarios());
         mv.addObject("clientes", clienteService.getClientes());
 
+        Date dataAtual = new Date(System.currentTimeMillis());
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String dataString = dateFormat.format(dataAtual);
+
+        mv.addObject("dataString", dataString);
+
         return mv;
     }
 
@@ -54,21 +66,48 @@ public class HorarioController {
 
         Horario horario = horarioService.getHorarioById(id);
         mv.addObject("horario", horario);
-        mv.addObject("funcionario", horario.getFuncionario());
-        mv.addObject("cliente", horario.getCliente());
-        mv.addObject("serviço", horario.getServico());
+        mv.addObject("servicos", horario.getFuncionario().getServicos());
+        
+
+        List<Integer> horasDisp = new ArrayList<Integer>();
+
+        for (int i = 8; i <= 18; i++){
+            horasDisp.add(i);
+        }
+
+        List<Integer> horasOcupadas = new ArrayList<Integer>();
+
+        for (Horario hora : horario.getFuncionario().getHorarios()) {
+            if(hora.getData().equals(horario.getData()) ){
+                horasOcupadas.add(hora.getHora());
+            }
+        }
+
+        for (Horario hora : horario.getCliente().getHorarios()) {
+            if(hora.getData().equals(horario.getData())){
+                horasOcupadas.add(hora.getHora());
+            }
+        }
+
+        horasDisp.removeAll(horasOcupadas);
+
+        mv.addObject("horasDisp", horasDisp);
 
         return mv;
 
     }
 
-    @GetMapping("/editarhorario/{id}")
+    @GetMapping("/editarHorario/{id}")
     public ModelAndView editarHorario(@PathVariable(name = "id") Integer id) {
 
         ModelAndView mv = new ModelAndView("horarioEdit");
 
         Horario horario = horarioService.getHorarioById(id);
         mv.addObject("horario", horario);
+        mv.addObject("clienteAtual", horario.getCliente());
+        mv.addObject("funcionarioAtual", horario.getFuncionario());
+        mv.addObject("clientes", clienteService.getClientes());
+        mv.addObject("funcionarios", funcionarioService.getFuncionarios());
 
         return mv;
 

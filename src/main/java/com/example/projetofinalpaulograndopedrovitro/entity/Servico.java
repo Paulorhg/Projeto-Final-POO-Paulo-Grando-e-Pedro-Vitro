@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.UniqueConstraint;
 
 @Entity
@@ -32,6 +33,10 @@ public class Servico implements Serializable {
     )
     private List<Funcionario> funcionarios;
 
+    @OneToMany
+    @JoinColumn(name = "ID_SERVICO")
+    private List<Horario> horarios;
+    
     public static long getSerialversionuid() {
         return serialVersionUID;
     }
@@ -70,7 +75,7 @@ public class Servico implements Serializable {
 
     @Override
     public String toString() {
-        return "Servico [id=" + id + ", nome=" + nome + ", preco=" + preco + "]";
+        return nome;
     }
 
     

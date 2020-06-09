@@ -14,5 +14,20 @@
     <h1>Editar Agendamento</h1>    
     <a href="/">Menu</a>
     <a href="/horarios">Voltar</a>
+
+    <form th:action="@{/salvarHorario}" th:object="${horario}" method="POST" id="formhorario">
+      
+        <label>ID:</label> <span th:text="${horario.id}"></span>
+        <br>
+        <input type="hidden" th:value="${horario.id}" th:field="${horario.id}" name="id" />
+    
+        
+        <br>  
+        <br>
+        <br>
+        <input type="submit" value="Salvar" />
+        <input type="reset"  value="Cancelar"/>
+    </form>
+
 </body>
 </html>

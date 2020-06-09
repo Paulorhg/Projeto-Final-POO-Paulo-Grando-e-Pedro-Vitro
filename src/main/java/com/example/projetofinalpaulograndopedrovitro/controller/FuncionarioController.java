@@ -1,5 +1,7 @@
 package com.example.projetofinalpaulograndopedrovitro.controller;
 
+import java.util.List;
+
 import com.example.projetofinalpaulograndopedrovitro.entity.Funcionario;
 import com.example.projetofinalpaulograndopedrovitro.entity.Servico;
 import com.example.projetofinalpaulograndopedrovitro.service.FuncionarioService;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
 
 @Controller
 public class FuncionarioController {
@@ -50,7 +53,9 @@ public class FuncionarioController {
         Funcionario funcionario = funcionarioService.getFuncionarioById(id);
         mv.addObject("funcionario", funcionario);
         mv.addObject("horarios", funcionario.getHorarios());
-        mv.addObject("servicos", servicoService.getServicos());
+        List<Servico> servicos = servicoService.getServicos();
+        servicos.removeAll(funcionario.getServicos());
+        mv.addObject("servicos", servicos);
 
         return mv;
 
@@ -63,7 +68,11 @@ public class FuncionarioController {
 
         Funcionario funcionario = funcionarioService.getFuncionarioById(id);
         mv.addObject("funcionario", funcionario);
-        mv.addObject("servicos", servicoService.getServicos());
+
+        List<Servico> servicos = servicoService.getServicos();
+        servicos.removeAll(funcionario.getServicos());
+
+        mv.addObject("servicos", servicos);
 
         return mv;
 

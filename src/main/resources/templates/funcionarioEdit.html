@@ -31,16 +31,7 @@
         <br>  
         <label>Ano de Nascimento:</label>
         <input type="text" placeholder="Digite o ano" th:value="${funcionario.anoNascimento}" name="anoNascimento" required/>
-        <br>  
-        <label>Serviço:</label>
-        <select th:field="${funcionario.servicos}" required>
-            <option value="">Escolha o serviço</option>
-            <option th:each="servico : ${servicos}"
-                        th:value="${servico.id}"
-                        th:text="${servico.nome}">
-            </option>
-        </select>
-
+        
         <br>
         <br>
         <input type="submit" value="Salvar" />

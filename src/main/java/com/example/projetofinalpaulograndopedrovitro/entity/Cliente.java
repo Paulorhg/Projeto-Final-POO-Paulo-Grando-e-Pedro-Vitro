@@ -71,7 +71,7 @@ public void setHorarios(List<Horario> horarios) {
     
 @Override
 public String toString() {
-    return "Cliente [id=" + id + ", nome=" + nome + "]";
+    return nome;
 }
 
 

@@ -79,7 +79,7 @@ public class Funcionario implements Serializable {
 
     @Override
     public String toString() {
-        return "Funcionario [id=" + id + ", nome=" + nome + "]";
+        return nome;
     }
 
     public int getTelefone() {

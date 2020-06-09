@@ -35,24 +35,17 @@
             </option>
         </select>
         <label>Data:</label>
-        <input type="date" placeholder="Escolha a data" th:value="${horario.hora}" name="preco" required/>
+        <input type="date" placeholder="Escolha a data" th:value="${horario.data}" th:min="${dataString}" name="data" required/>
         
         <input type="submit" value="Salvar" />
         <input type="reset"  value="Limpar" />
     </form>
-    //receber infos
-    //dia
-
-    //Horario
-
-    //funcionario
-
-    //servico 
-
-    //cliente
     
-    //mostrar infos
+    <br>
+    <br>
+
     <table>
+        <tr>
             <th>Dia</th>
             <th>Hora</th>
             <th>Funcionário</th>
@@ -60,6 +53,17 @@
             <th>Cliente</th>
             <th>Remover</th>
             <th>Editar</th>
+        </tr>
+        <tr th:each="horario: ${horarios}">
+            <td th:text="${horario.data}"></td>
+            <td th:text="${horario.hora}"></td>
+            <td th:text="${horario.funcionario}"></td>
+            <td th:text="${horario.servico}"></td>
+            <td th:text="${horario.cliente}"></td>
+            <td> <a th:href="@{'/removerHorario?id=' + ${horario.id}}">Remover</a></td>
+            <td> <a th:href="@{'/editarHorario/' + ${horario.id}}">Editar</a></td>
+            <td> <a th:href="@{'/detalheHorario/' + ${horario.id}}">Detalhe</a></td>
+        </tr>
     </table>
 </body>
 </html>

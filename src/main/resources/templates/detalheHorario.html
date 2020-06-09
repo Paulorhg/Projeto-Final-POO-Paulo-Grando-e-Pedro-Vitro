@@ -14,5 +14,51 @@
     <h1>Detalhes Agendamento</h1>    
     <a href="/">Menu</a>
     <a href="/horarios">Voltar</a>
+
+    <br>
+    <br>
+    <b>Código: </b> <span th:text="${horario.id}"></span>
+    <br><b>Cliente: </b> <span th:text="${horario.cliente}"></span>
+    <br><b>Funcionario: </b> <span th:text="${horario.funcionario}"></span>
+    <br><b>Data: </b> <span th:text="${horario.data}"></span>
+    <br><b>Hora: </b> <span th:text="${horario.hora}"></span>
+    <br><b>Serviço: </b> <span th:text="${horario.servico}"></span>
+    <br>
+    <br>
+
+    <form th:action="@{/salvarHorario}" th:object="${horario}" method="POST" id="formHorario">
+      
+        <label>ID:</label> <span th:text="${horario.id}"></span>
+        <br>
+        <input type="hidden" th:value="${horario.id}" th:field="${horario.id}" name="id" />
+        <input type="hidden" th:value="${horario.cliente}" th:field="${horario.cliente}" name="cliente" />
+        <input type="hidden" th:value="${horario.funcionario}" th:field="${horario.funcionario}" name="funcionario" />
+        <input type="hidden" th:value="${horario.data}" th:field="${horario.data}" name="data" />
+
+
+        <label>Hora:</label>
+        <select th:field="${horario.hora}" required>
+            <option th:value="${horario.hora}">Escolha o horario</option>
+            <option th:each="hora : ${horasDisp}"
+                    th:value="${hora}"
+                    th:text="${hora}">
+            </option>
+        </select>
+
+        <label>Servico:</label>
+        <select th:field="${horario.servico}" required>
+            <option value="">Escolha o serviço</option>
+            <option th:each="servico : ${servicos}"
+                    th:value="${servico.id}"
+                    th:text="${servico.nome}">
+            </option>
+        </select>
+
+        <br>
+        <br>
+        <input type="submit" value="Salvar" />
+        <input type="reset"  value="Cancelar"/>
+    </form>
+
 </body>
 </html>

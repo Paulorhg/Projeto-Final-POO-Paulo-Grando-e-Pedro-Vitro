@@ -1,7 +1,6 @@
 package com.example.projetofinalpaulograndopedrovitro.entity;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,8 +17,8 @@ public class Horario implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private LocalDate hora;
-    private Servico servico;
+    private String data;
+    private int hora;
 
     @ManyToOne
     @JoinColumn(name = "ID_FUNCIONARIO")
@@ -28,6 +27,10 @@ public class Horario implements Serializable{
     @ManyToOne
     @JoinColumn(name = "ID_CLIENTE")
     private Cliente cliente;
+    
+    @ManyToOne
+    @JoinColumn(name = "ID_SERVICO")
+    private Servico servico;
 
     public static long getSerialversionuid() {
         return serialVersionUID;
@@ -41,11 +44,19 @@ public class Horario implements Serializable{
         this.id = id;
     }
 
-    public LocalDate getHora() {
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public int getHora() {
         return hora;
     }
 
-    public void setHora(LocalDate hora) {
+    public void setHora(int hora) {
         this.hora = hora;
     }
 
@@ -75,8 +86,10 @@ public class Horario implements Serializable{
 
     @Override
     public String toString() {
-        return "Horario [hora=" + hora + ", id=" + id + "]";
+        return "Horario [data=" + data + ", hora=" + hora + ", id=" + id + "]";
     }
+
+    
 
     
 
