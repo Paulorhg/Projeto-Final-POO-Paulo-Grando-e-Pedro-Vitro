@@ -104,8 +104,6 @@ public class HorarioController {
 
         Horario horario = horarioService.getHorarioById(id);
         mv.addObject("horario", horario);
-        mv.addObject("clienteAtual", horario.getCliente());
-        mv.addObject("funcionarioAtual", horario.getFuncionario());
         mv.addObject("clientes", clienteService.getClientes());
         mv.addObject("funcionarios", funcionarioService.getFuncionarios());
 

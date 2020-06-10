@@ -40,7 +40,7 @@
 
     
     <form th:action="@{/associarFuncionarioServico(codigoFuncionario=${funcionario.id})}" method="POST">
-        <label><b>Serviços:</b></label>
+        <label><b>Serviços:</b></label><br>
         <select name="id" required>
             <option value="">Escolha o Serviço</option>
             <option th:each="servico : ${servicos}"
@@ -48,8 +48,40 @@
                         th:text="${servico.nome}">
             </option>
         </select>
-        <input type="submit" value="Associar Servico" />
+        <input type="submit" value="Associar Serviço" />
     </form>
+    <br>
+    <form th:action="@{/dissociarFuncionarioServico(codigoFuncionario=${funcionario.id})}" method="POST">
+        <select name="id" required>
+            <option value="">Escolha o Serviço</option>
+            <option th:each="servico : ${funcionario.servicos}"
+                        th:value="${servico.id}"
+                        th:text="${servico.nome}">
+            </option>
+        </select>
+        <input type="submit" value="Dissociar Serviço" />
+    </form>
+
+    <h2>Horarios Marcados:</h2>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Data</th>
+            <th>Hora</th>
+            <th>Cliente</th>
+            <th>Serviço</th>
+        </tr>
+       
+        <tr th:each="horario : ${funcionario.horarios}">
+            <td th:text="${horario.id}"></td>
+            <td th:text="${horario.data}"></td>
+            <td th:text="${horario.hora}"></td>
+            <td th:text="${horario.cliente}"></td>
+            <td th:text="${horario.servico}"></td>
+        </tr>
+    </table>
+    <br>
+    <br>
 
 </body>
 </html>

@@ -92,6 +92,20 @@ public class FuncionarioController {
         return "redirect:/detalheFuncionario/" + codigoFuncionario;
     }
 
+    @PostMapping("/dissociarFuncionarioServico")
+    public String dissociarAutor(@ModelAttribute Servico servico, @RequestParam Integer codigoFuncionario) {
+        
+
+        Funcionario funcionario = funcionarioService.getFuncionarioById(codigoFuncionario);
+        servico = servicoService.getServicoById(servico.getId());
+        
+
+        funcionario.getServicos().remove(servico);
+        funcionarioService.salvar(funcionario);
+
+        return "redirect:/detalheFuncionario/" + codigoFuncionario;
+    }
+
     @PostMapping("/salvarFuncionario")
     public String salvar(@ModelAttribute Funcionario funcionario) {
 

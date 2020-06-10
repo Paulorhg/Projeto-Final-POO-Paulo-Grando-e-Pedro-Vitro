@@ -20,8 +20,23 @@
         <label>ID:</label> <span th:text="${horario.id}"></span>
         <br>
         <input type="hidden" th:value="${horario.id}" th:field="${horario.id}" name="id" />
-    
-        
+        <label>Funcionario:</label>
+        <select th:field="${horario.funcionario}" required>
+            <option th:value="${horario.funcionario}">Escolha o funcionario</option>
+            <option th:each="funcionario : ${funcionarios}"
+                        th:value="${funcionario.id}"
+                        th:text="${funcionario.nome}">
+            </option>
+        </select>
+        <label>Cliente:</label>
+        <select th:field="${horario.cliente}" required>
+            <option th:value="${horario.cliente}">Escolha o cliente</option>
+            <option th:each="cliente : ${clientes}"
+                        th:value="${cliente.id}"
+                        th:text="${cliente.nome}">
+            </option>
+        </select>
+        <input type="date" placeholder="Escolha a data" th:value="${horario.data}" th:min="${dataString}" name="data" required/>
         <br>  
         <br>
         <br>

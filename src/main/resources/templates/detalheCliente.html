@@ -23,20 +23,24 @@
     <br>
     <br>
 
+    <h2>Horarios Marcados:</h2>
     <table>
         <tr>
-            <th>Horario</th>
+            <th>Id</th>
+            <th>Data</th>
+            <th>Hora</th>
             <th>Funcionario</th>
             <th>Serviço</th>
         </tr>
        
-        <tr th:each="cliente : ${clientes}">
-            <td th:text="${cliente.horario?.hora}"></td>
-            <td th:text="${cliente.horario?.funcionario}"></td>
-            <td th:text="${cliente.horario?.servio}"></td>
+        <tr th:each="horario : ${cliente.horarios}">
+            <td th:text="${horario.id}"></td>
+            <td th:text="${horario.data}"></td>
+            <td th:text="${horario.hora}"></td>
+            <td th:text="${horario.funcionario}"></td>
+            <td th:text="${horario.servico}"></td>
         </tr>
     </table>
-    <br>
 
 
 </body>
